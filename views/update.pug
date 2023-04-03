@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    h4 Update Student Information
+
+    .section
+        form.form(action="/update", method="POST")
+            input.input(type="hidden", name="id", value=`${student.id}`)
+
+            label.label(for="fullname") Full Name
+            input.input(type="text", name="fullname", value=`${student.fullname}`)
+
+            label.label(for="phone") Phone Number
+            input.input(type="text", name="phone", value=`${student.phone}`)
+
+            label.label(for="email") Email
+            input.input(type="text", name="email", value=`${student.email}`)
+
+            label.label(for="address") Address
+            input.input(type="text", name="address", value=`${student.address}`)
+
+            label.label(for="postindex") Post index
+            input.input(type="text", name="postindex", value=`${student.index}`)
+
+            button.btn(type="submit") Update

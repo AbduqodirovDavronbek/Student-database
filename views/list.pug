@@ -1,0 +1,30 @@
+extends layout
+
+block content
+
+    if created
+        h5.created_text Student created
+
+    .section.flex
+        .list
+            if students
+                each student in students
+                    a.student_btn(href=`/student/${student.id}`)
+                        .student_text
+                            p #{student.fullname}
+                            p #{student.phone}
+                        form.delete_form(action="/delete", method="POST")
+                            input(type="hidden", name="id", value=`${student.id}`)
+                            button.delete_btn(type="submit") Delete
+                        a.update_btn(href=`/update/${student.id}`) Edit
+
+        .detail
+            if selectedId && student
+                h3 #{student.fullname}
+                p #{student.phone}
+                p #{student.email}
+                p #{student.address}
+                p #{student.index}
+
+    if deleted
+        h5.deleted_text Student deleted
